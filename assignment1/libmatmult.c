@@ -186,11 +186,11 @@ matmult_blk (int m, int n, int k, double **A, double **B, double **C, int bs)
 // initialize all of C with zeroes without loop (C[m][n] = { 0 })
   memset (*C, 0, sizeof (double) * m * n);
 
-  for (i_b = 0; i_b < m; i_b += bs)
+  for (i_b = 1; i_b < m; i_b += bs)
     {
-      for (j_b = 0; j_b < n; j_b += bs)
+      for (j_b = 1; j_b < n; j_b += bs)
 	{
-	  for (r_b = 0; r_b < k; r_b += bs)
+	  for (r_b = 1; r_b < k; r_b += bs)
 	    {
 	      for (i = i_b; i < min (m, i_b + bs - 1); i++)
 		{
