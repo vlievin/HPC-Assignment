@@ -1,15 +1,17 @@
+# module load studio
+
 TARGET	= libmatmult.so
 LIBSRCS	= libmatmult.c
 LIBOBJS	= libmatmult.o
 
-OPT	= -g 
+OPT	= -g
 PIC	= -fPIC
 
-CC	= gcc
+CC	= suncc
 CFLAGS= $(OPT) $(PIC) $(XOPTS)
 
 SOFLAGS = -shared 
-XLIBS	= 
+XLIBS	= -L/usr/lib64/atlas -lcblas
 
 $(TARGET): $(LIBOBJS)
 	$(CC) -o $@ $(SOFLAGS) $(LIBOBJS) $(XLIBS)
