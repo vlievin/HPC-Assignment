@@ -126,3 +126,8 @@ MFLOPS_MIN_T=[3.0]        - the minimum run-time (def: 3.0 s)
 MFLOPS_MAX_IT=[infinity]  - max. no of iterations; 
                             set if you want to do profiling.
 
+
+test_commit: solution:
+http://stackoverflow.com/questions/7438313/pushing-to-git-returning-error-code-403-fatal-http-request-failed
+
+
