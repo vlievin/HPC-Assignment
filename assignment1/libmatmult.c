@@ -3,6 +3,8 @@
 #include <cblas.h>
 #include <string.h>		/* memset */
 
+#define min(x,y) (((x) < (y)) ? (x) : (y))
+
 void
 matmult_lib (int m, int n, int k, double **A, double **B, double **C)
 {
@@ -45,12 +47,6 @@ matmult_nat (int m, int n, int k, double **A, double **B, double **C)
 	  C[i][j] = sum;
 	}
     }
-}
-
-void
-matmult_blk (int m, int n, int k, double **A, double **B, double **C, int bs)
-{
-
 }
 
 void
@@ -174,6 +170,38 @@ matmult_nkm (int m, int n, int k, double **A, double **B, double **C)
 	  for (i = 0; i < m; i++)
 	    {
 	      C[i][j] += A[i][r] * B[r][j];
+	    }
+	}
+    }
+}
+
+// http://www.netlib.org/utk/papers/autoblock/node2.html
+// http://stackoverflow.com/questions/16115770/block-matrix-multiplication
+void
+matmult_blk (int m, int n, int k, double **A, double **B, double **C, int bs)
+{
+
+  int i_b, j_b, r_b, i, j, r;
+
+// initialize all of C with zeroes without loop (C[m][n] = { 0 })
+  memset (*C, 0, sizeof (double) * m * n);
+
+  for (i_b = 0; i_b < m; i_b += bs)
+    {
+      for (j_b = 0; j_b < n; j_b += bs)
+	{
+	  for (r_b = 0; r_b < k; r_b += bs)
+	    {
+	      for (i = i_b; i < min (m, i_b + bs); i++)
+		{
+		  for (j = j_b; j < min (n, j_b + bs); j++)
+		    {
+		      for (r = r_b; r < min (k, r_b + bs); r++)
+			{
+			  C[i][j] = C[i][j] + A[i][r] * B[r][j];
+			}
+		    }
+		}
 	    }
 	}
     }

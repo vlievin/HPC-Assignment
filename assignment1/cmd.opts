@@ -16,7 +16,7 @@
 # $ ./matmult_c.studio nmk 5 3 2
 # $ ./matmult_c.studio nkm 5 3 2
 
-# $ ./matmult_c.studio blk 5 3 2
+# $ ./matmult_c.studio blk 5 3 2 20
 
 # $ MATMULT_RESULTS=1 ./matmult_c.studio nat 5 3 2
 # $ MATMULT_RESULTS=1 MATMULT_COMPARE=0 ./matmult_c.studio nat 5 3 2
