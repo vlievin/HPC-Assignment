@@ -6,7 +6,7 @@
 #define min(x,y) (((x) < (y)) ? (x) : (y))
 
 void
-matmult_lib (int m, int n, int k, double **A, double **B, double **C)
+matmult_lib (int m, int n, int k, double **A, double **B, double **C) //tested: OK
 {
 
   double alpha = 1.0;
@@ -30,7 +30,7 @@ C = AB for an n x m matrix A and an m x p matrix B, then C is an n x p matrix
 */
 
 void
-matmult_nat (int m, int n, int k, double **A, double **B, double **C)
+matmult_nat (int m, int n, int k, double **A, double **B, double **C) //tested: OK
 {
 
   int i, j, r, sum;
@@ -50,7 +50,7 @@ matmult_nat (int m, int n, int k, double **A, double **B, double **C)
 }
 
 void
-matmult_mnk (int m, int n, int k, double **A, double **B, double **C)
+matmult_mnk (int m, int n, int k, double **A, double **B, double **C) //tested: OK
 {
 
   int i, j, r, sum;
@@ -70,7 +70,7 @@ matmult_mnk (int m, int n, int k, double **A, double **B, double **C)
 }
 
 void
-matmult_mkn (int m, int n, int k, double **A, double **B, double **C)
+matmult_mkn (int m, int n, int k, double **A, double **B, double **C) //tested: OK
 {
 
   int i, j, r;
@@ -92,7 +92,7 @@ matmult_mkn (int m, int n, int k, double **A, double **B, double **C)
 
 
 void
-matmult_knm (int m, int n, int k, double **A, double **B, double **C)
+matmult_knm (int m, int n, int k, double **A, double **B, double **C) //tested: OK
 {
 
   int i, j, r;
@@ -113,7 +113,7 @@ matmult_knm (int m, int n, int k, double **A, double **B, double **C)
 }
 
 void
-matmult_kmn (int m, int n, int k, double **A, double **B, double **C)
+matmult_kmn (int m, int n, int k, double **A, double **B, double **C) //tested: OK
 {
 
   int i, j, r;
@@ -134,7 +134,7 @@ matmult_kmn (int m, int n, int k, double **A, double **B, double **C)
 }
 
 void
-matmult_nmk (int m, int n, int k, double **A, double **B, double **C)
+matmult_nmk (int m, int n, int k, double **A, double **B, double **C) //tested: OK
 {
 
   int i, j, r;
@@ -155,7 +155,7 @@ matmult_nmk (int m, int n, int k, double **A, double **B, double **C)
 }
 
 void
-matmult_nkm (int m, int n, int k, double **A, double **B, double **C)
+matmult_nkm (int m, int n, int k, double **A, double **B, double **C) //tested: OK
 {
 
   int i, j, r;
@@ -178,31 +178,32 @@ matmult_nkm (int m, int n, int k, double **A, double **B, double **C)
 // http://www.netlib.org/utk/papers/autoblock/node2.html
 // http://stackoverflow.com/questions/16115770/block-matrix-multiplication
 void
-matmult_blk (int m, int n, int k, double **A, double **B, double **C, int bs)
+matmult_blk (int m, int n, int k, double **A, double **B, double **C, int bs) //tested: OK
 {
 
-  int i_b, j_b, r_b, i, j, r;
+	int i_b, j_b, r_b, i, j, r;
 
-// initialize all of C with zeroes without loop (C[m][n] = { 0 })
-  memset (*C, 0, sizeof (double) * m * n);
+	// initialize all of C with zeroes without loop (C[m][n] = { 0 })
+	memset (*C, 0, sizeof (double) * m * n);
 
-  for (i_b = 1; i_b < m; i_b += bs)
-    {
-      for (j_b = 1; j_b < n; j_b += bs)
+	for (i_b = 0; i_b < m; i_b += bs)
 	{
-	  for (r_b = 1; r_b < k; r_b += bs)
-	    {
-	      for (i = i_b; i < min (m, i_b + bs - 1); i++)
+		for (i = i_b; i < min (m, i_b + bs - 1); i++)
 		{
-		  for (j = j_b; j < min (n, j_b + bs - 1); j++)
-		    {
-		      for (r = r_b; r < min (k, r_b + bs - 1); r++)
+			for (j_b = 0; j_b < n; j_b += bs)
 			{
-			  C[i][j] = C[i][j] + A[i][r] * B[r][j];
-			}
-		    }
+		  		for (j = j_b; j < min (n, j_b + bs - 1); j++)
+		    		{
+
+			  		for (r_b = 0; r_b < k; r_b += bs)
+			    		{
+			      			for (r = r_b; r < min (k, r_b + bs - 1); r++)
+						{
+				  			C[i][j] += A[i][r] * B[r][j];
+						}
+			    		}
+				}
+		    	}
 		}
-	    }
 	}
-    }
 }
