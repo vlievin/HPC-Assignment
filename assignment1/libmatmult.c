@@ -30,21 +30,20 @@ C = AB for an n x m matrix A and an m x p matrix B, then C is an n x p matrix
 */
 
 void
-matmult_nat (int m, int n, int k, double **A, double **B, double **C) //tested: OK
+matmult_nat (int m, int n, int k, double **A, double **B, double **C) //tested: 
 {
 
-  int i, j, r, sum;
+  int i, j, r;
 
   for (i = 0; i < m; i++)
     {
       for (j = 0; j < n; j++)
 	{
-	  sum = 0;
+	  C[i][j] = 0;
 	  for (r = 0; r < k; r++)
 	    {
-	      sum = sum + A[i][r] * B[r][j];
+	      	C[i][j] += A[i][r] * B[r][j];
 	    }
-	  C[i][j] = sum;
 	}
     }
 }
@@ -53,18 +52,17 @@ void
 matmult_mnk (int m, int n, int k, double **A, double **B, double **C) //tested: OK
 {
 
-  int i, j, r, sum;
+  int i, j, r;
 
   for (i = 0; i < m; i++)
     {
       for (j = 0; j < n; j++)
 	{
-	  sum = 0;
+	  C[i][j] = 0;
 	  for (r = 0; r < k; r++)
 	    {
-	      sum = sum + A[i][r] * B[r][j];
+	      	C[i][j] += A[i][r] * B[r][j];
 	    }
-	  C[i][j] = sum;
 	}
     }
 }
