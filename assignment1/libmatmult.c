@@ -49,7 +49,7 @@ matmult_nat (int m, int n, int k, double **A, double **B, double **C) //tested:
 }
 
 void
-matmult_mnk (int m, int n, int k, double **A, double **B, double **C) //tested: OK
+matmult_mnk (int m, int n, int k, double **A, double **B, double **C) //tested: 
 {
 
   int i, j, r;
