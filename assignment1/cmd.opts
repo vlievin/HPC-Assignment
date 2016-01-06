@@ -1,0 +1,22 @@
+# suncc command
+# $ module load studio (Loaded module: studio/12u4)
+
+# formatting
+# $ indent *.c
+
+# assignment part1
+# $ ./matmult_c.studio nat 5 3 2
+# $ ./matmult_c.studio lib 5 3 2
+
+# assignment part2
+# $ ./matmult_c.studio mnk 5 3 2
+# $ ./matmult_c.studio mkn 5 3 2
+# $ ./matmult_c.studio knm 5 3 2
+# $ ./matmult_c.studio kmn 5 3 2
+# $ ./matmult_c.studio nmk 5 3 2
+# $ ./matmult_c.studio nkm 5 3 2
+
+# $ ./matmult_c.studio blk 5 3 2 20
+
+# $ MATMULT_RESULTS=1 ./matmult_c.studio nat 5 3 2
+# $ MATMULT_RESULTS=1 MATMULT_COMPARE=0 ./matmult_c.studio nat 5 3 2
