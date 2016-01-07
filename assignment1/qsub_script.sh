@@ -7,19 +7,23 @@
 #PBS -q hpc
 # -- estimated wall clock time (execution time): hh:mm:ss --
 #PBS -l walltime=01:00:00
-# -- number of processors/cores/nodes (request 1 node with 20 cores) --
+# -- number of processors/cores/nodes (request X node with X cores) --
 #PBS -l nodes=1:ppn=1
+# -- CPU ttype --
+#PBS -l feature='XeonX550'
 # -- user email address --
 #PBS -M valentin.lievin@gmail.com
 # -- mail notification when begins(b), ends(e) and fails (a=aborted) --
 #PBS -m a
-# -- run in the current working (submission) directory --
 
 # -- run in the current working (submission) directory --
 if test X$PBS_ENVIRONMENT = XPBS_BATCH; then cd $PBS_O_WORKDIR; fi
 
+outfile="out.dat"
+
 NPROCS=`wc -l < "${PBS_NODEFILE}"`
 (
+        echo == CPUTYPE: $CPUTYPE
         echo == NPROCS: $NPROCS
         echo == PBS_NP: $PBS_NP
         echo == PBS_NODENUM: $PBS_NODENUM
@@ -28,11 +32,9 @@ NPROCS=`wc -l < "${PBS_NODEFILE}"`
         echo == PBS_TASKNUM: $PBS_TASKNUM
 
 	# call one or multiple scripts
-	./mm-multiplication.sh -o output_1.dat -1 -2
+	./mm-multiplication.sh -o $outfile -1
 
-) > specs.txt
-
-lscpu >> specs.txt
+) >> $outfile
 
 exit 0
 
