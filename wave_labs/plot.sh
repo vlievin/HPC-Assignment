@@ -11,5 +11,5 @@ gnuplot << EOF
 	set ylabel "Signal/V"
 	set xlabel "time/secs"
 	plot f using 1:2 with lines title f lt rgb "red" , \
-	     f_old using 1:2 with lines title f_old lt rgb "blue"
+	f_old using 1:2 with lines title f_old lt rgb "blue" 
 EOF

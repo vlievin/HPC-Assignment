@@ -5,6 +5,7 @@
 # $ indent *.c
 
 # assignment part1
+# $ qsub send2server.sh
 # $ ./matmult_c.studio nat 5 3 2
 # $ ./matmult_c.studio lib 5 3 2
 

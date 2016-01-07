@@ -1,3 +1,4 @@
 libmatmult.o
+*.c~
 *.o1
 *.e1
