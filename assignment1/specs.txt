@@ -12,7 +12,7 @@ CPU family:            6
 Model:                 26
 Stepping:              5
 CPU MHz:               2667.000
-BogoMIPS:              5332.55
+BogoMIPS:              5332.57
 Virtualization:        VT-x
 L1d cache:             32K
 L1i cache:             32K

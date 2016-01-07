@@ -2,7 +2,7 @@
 # $ module load studio (Loaded module: studio/12u4)
 
 # formatting
-# $ indent *.c
+# $ indent --use-tabs *.c
 
 # assignment part1
 # $ qsub send2server.sh
