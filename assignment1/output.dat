@@ -1,11 +1,8 @@
-== NPROCS: 1
-== PBS_NP: 1
-== PBS_NODENUM: 0
-== PBS_NUM_NODES: 1
-== PBS_NUM_PPN: 1
-== PBS_TASKNUM: 1
-     2.344    152.911 0 # matmult_mnk
-   234.375    179.241 0 # matmult_mnk
-     2.344    167.662 0 # matmult_mkn
-   234.375    171.455 0 # matmult_mkn
-     2.344    167.166 0 # matmult_nmk
+== NPROCS:
+== PBS_NP:
+== PBS_NODENUM:
+== PBS_NUM_NODES:
+== PBS_NUM_PPN:
+== PBS_TASKNUM:
+-h
+usage: ./send2server.sh -1 [-2] [-3]

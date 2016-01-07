@@ -2,7 +2,7 @@
 
 # embedded options to qsub - start with #PBS
 # -- Name of the job ---
-#PBS -N HPC_mnk
+#PBS -N HPC_matrix_multipication
 # -- specify queue --
 #PBS -q hpc
 # -- estimated wall clock time (execution time): hh:mm:ss --
@@ -12,31 +12,28 @@
 # -- user email address --
 #PBS -M valentin.lievin@gmail.com
 # -- mail notification when begins(b), ends(e) and fails (a=aborted) --
-#PBS -m abe
+#PBS -m a
 # -- run in the current working (submission) directory --
 
 # -- run in the current working (submission) directory --
 if test X$PBS_ENVIRONMENT = XPBS_BATCH; then cd $PBS_O_WORKDIR; fi
 
-MSIZE=( 10 100 )
-METHOD=( mnk mkn nmk nkm kmn knm )
-
-NPROCS=`wc -l < $PBS_NODEFILE`
+NPROCS=`wc -l < "${PBS_NODEFILE}"`
 (
-	echo == NPROCS: $NPROCS
-	echo == PBS_NP: $PBS_NP
-	echo == PBS_NODENUM: $PBS_NODENUM
-	echo == PBS_NUM_NODES: $PBS_NUM_NODES
-	echo == PBS_NUM_PPN: $PBS_NUM_PPN
-	echo == PBS_TASKNUM: $PBS_TASKNUM
+        echo == NPROCS: $NPROCS
+        echo == PBS_NP: $PBS_NP
+        echo == PBS_NODENUM: $PBS_NODENUM
+        echo == PBS_NUM_NODES: $PBS_NUM_NODES
+        echo == PBS_NUM_PPN: $PBS_NUM_PPN
+        echo == PBS_TASKNUM: $PBS_TASKNUM
 
-	for i in ${METHOD[@]} ; do
-		for j in ${MSIZE[@]} ; do
-			./matmult_c.studio $i $j $j $j
-		done
-	done
-) > output.dat
+	# call one or multiple scripts
+	./mm-multiplication.sh -o output_1.dat -1 -2
 
-lscpu > specs.txt
+) > specs.txt
+
+lscpu >> specs.txt
 
 exit 0
+
+
