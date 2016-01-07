@@ -1,4 +1,5 @@
-libmatmult.o
+*.o
 *.c~
 *.o1*
 *.e1*
+*.dat
