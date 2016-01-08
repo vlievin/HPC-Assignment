@@ -2,7 +2,7 @@ TARGET	= libmatmult.so
 LIBSRCS	= libmatmult.c
 LIBOBJS	= libmatmult.o
 
-OPT	= -g
+OPT	= -g -fast -xtarget=ivybridge
 PIC	= -fPIC
 
 CC	= suncc

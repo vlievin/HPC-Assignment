@@ -22,7 +22,11 @@
 # $ MATMULT_RESULTS=1 ./matmult_c.studio nat 5 3 2
 # $ MATMULT_RESULTS=1 MATMULT_COMPARE=0 ./matmult_c.studio nat 5 3 2
 
-# $ showq | grep s1514
+# $ showq | grep s151457
+# $ qdel <your-job-id>
+# $ checkjob <your-job-id>
 
 # processors
-# XeonE5-2660 XeonE5-2665 XeonE5-2660v3 XeonE5-2680 XeonX5650 XeonX5550 Opteron2382 Opteron2354 Opteron2220
+# XeonX5550 XeonE5-2680 Opteron6136
+# $ linuxsh
+# $ qrsh
