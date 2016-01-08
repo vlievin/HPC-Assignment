@@ -1,11 +1,11 @@
 #!/bin/bash
 
-MSIZE=( 10 100 500 1000 3000 )
+MSIZE=( 10 100 200 300 500 1000 3000 )
 
 # L1 cache is 64 kB
-BSIZE=( 5 10 15 20 30 40 50 55 60 65 80 100 )
+BSIZE=( 80 100 200 500 )
 METHOD_1=( nat lib )
-METHOD_2=( mnk mkn nmk nkm kmn knm )
+METHOD_2=( mkn )
 
 out=output_undefined.dat
 
